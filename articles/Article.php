@@ -82,15 +82,23 @@ class Article
     return $update;
   }
 
+  public function delete()
+  {
+    $delete = $this->connection
+      ->exec("DELETE FROM articles WHERE id = $this->id");
+
+    return $delete;
+  }
+
   public static function all()
   {
-    $obj = new self;
-    return $obj->getAll();
+    $articleWorker = new self;
+    return $articleWorker->getAll();
   }
 
   public static function search($searchTerm)
   {
-    $obj = new self;
-    return $obj->searchArticles($searchTerm);
+    $articleWorker = new self;
+    return $articleWorker->searchArticles($searchTerm);
   }
 }
