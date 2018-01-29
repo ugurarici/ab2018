@@ -1,5 +1,5 @@
 <?php include "header.php" ?>
-<form action="new.php" method="post">
+<form action="index.php?a=store" method="post">
   <input type="text" name="title" placeholder="Başlık"><br>
   <textarea name="content"></textarea><br>
   <button type="submit">Ekle</button>

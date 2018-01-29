@@ -1,7 +1,7 @@
 <?php include "header.php" ?>
-<?php foreach (Article::paginate() as $article): ?>
-  <a href="detail.php?id=<?=$article->id?>"><?=$article->title?></a><br>
+<?php foreach ($articles as $article): ?>
+  <a href="index.php?a=detail&id=<?=$article->id?>"><?=$article->title?></a><br>
 <?php endforeach; ?>
 <hr>
-<a href="new.php">Yeni Ekle</a>
+<a href="index.php?a=new">Yeni Ekle</a>
 <?php include "footer.php" ?>
