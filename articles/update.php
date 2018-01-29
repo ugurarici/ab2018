@@ -1,5 +1,5 @@
 <?php
-require_once "Article.php";
+require_once "models/Article.php";
 //  mevcut article'ı güncelleyeceğiz
 $article = Article::find((int)$_GET['id']);
 //  article yoksa ana sayfaya yallah
@@ -15,9 +15,5 @@ if($_SERVER['REQUEST_METHOD']==="POST") {
   header("Location: detail.php?id=$article->id");
   die();
 }
-?>
-<form action="update.php?id=<?=$article->id?>" method="post">
-  <input type="text" name="title" placeholder="Başlık" value="<?=$article->title?>"><br>
-  <textarea name="content"><?=$article->content?></textarea><br>
-  <button type="submit">Güncelle</button>
-</form>
+
+require "views/update.php";

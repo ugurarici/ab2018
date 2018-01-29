@@ -1,6 +1,6 @@
 <?php
 
-require_once "Article.php";
+require_once "models/Article.php";
 
 //  Article yönetim sistemi
 
@@ -13,8 +13,6 @@ require_once "Article.php";
 
 // mevcut sayfayı çekip döngüye sokuyoruz
 
-foreach (Article::paginate() as $article): ?>
-  <a href="detail.php?id=<?=$article->id?>"><?=$article->title?></a><br>
-<?php endforeach; ?>
-<hr>
-<a href="new.php">Yeni Ekle</a>
+$articles = Article::paginate();
+
+require "views/index.php";
