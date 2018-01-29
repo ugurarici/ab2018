@@ -71,7 +71,8 @@ class Article
     $updateQuery = $this->connection->prepare(
       "UPDATE articles SET
       title = :titleInQuery,
-      content = :contentInQuery
+      content = :contentInQuery,
+      updated_at = CURRENT_TIMESTAMP
       WHERE id = :idInQuery"
     );
     $update = $updateQuery->execute(array(
@@ -104,6 +105,18 @@ class Article
     return $articles;
   }
 
+  public function initById($id)
+  {
+    $result = $this->connection->query("SELECT * FROM articles WHERE id = $id")->fetch(PDO::FETCH_OBJ);
+    if(!$result) return false;
+    $this->id = $result->id;
+    $this->title = $result->title;
+    $this->content = $result->content;
+    $this->created_at = $result->created_at;
+    $this->updated_at = $result->updated_at;
+    return $this;
+  }
+
   public static function all()
   {
     $articleWorker = new self;
@@ -120,5 +133,11 @@ class Article
   {
     $articleWorker = new self;
     return $articleWorker->getPaginated($count, $orderBy, $pageSelector);
+  }
+
+  public static function find($id)
+  {
+    $articleWorker = new self;
+    return $articleWorker->initById($id);
   }
 }

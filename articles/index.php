@@ -11,17 +11,10 @@ require_once "Article.php";
 //  Mevcut Article üzerinde değişiklik yapabilmeliyim
 //  Mevcut bir Article'ı silebilmeliyim
 
-//  tamamını çekip döngüye sokuyoruz
-// $articlesOnPage = Article::all();
-foreach (Article::paginate(5, 'ASC', 'sayfanumarasi') as $article) {
-  echo $article->id . " " . $article->title . "<hr>";
-}
+// mevcut sayfayı çekip döngüye sokuyoruz
 
-///////////
-//  Yeni bir tane ekleyip hemen ardından güncelliyoruz
-// $article = new Article;
-// $article->title = "bu ilk hali";
-// $article->content = "İçeriğimiz daha da hayırlı olsun inşallah";
-// $article->save();
-// $article->title = "ama böyle değişmesi lazım";
-// $article->save();
+foreach (Article::paginate() as $article): ?>
+  <a href="detail.php?id=<?=$article->id?>"><?=$article->title?></a><br>
+<?php endforeach; ?>
+<hr>
+<a href="new.php">Yeni Ekle</a>
