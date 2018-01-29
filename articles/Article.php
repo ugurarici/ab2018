@@ -90,6 +90,20 @@ class Article
     return $delete;
   }
 
+  public function getPaginated($count = 10, $orderBy = "DESC", $pageSelector = "page")
+  {
+    //  sayfada kaç tane olacak -> $count
+    //  kaçıncı sayfadayım -> $_GET[$pageSelector]
+    //  neye göre listelenecek -> $orderBy
+    $page = 1;
+    if(isset($_GET[$pageSelector])) $page = (int)$_GET[$pageSelector];
+    $articles = $this->connection
+      ->query("SELECT * FROM articles ORDER BY created_at $orderBy, id DESC LIMIT ".(($page-1)*$count).", $count")
+      ->fetchAll(PDO::FETCH_CLASS, 'Article');
+
+    return $articles;
+  }
+
   public static function all()
   {
     $articleWorker = new self;
@@ -100,5 +114,11 @@ class Article
   {
     $articleWorker = new self;
     return $articleWorker->searchArticles($searchTerm);
+  }
+
+  public static function paginate($count = 10, $orderBy = "DESC", $pageSelector = "page")
+  {
+    $articleWorker = new self;
+    return $articleWorker->getPaginated($count, $orderBy, $pageSelector);
   }
 }

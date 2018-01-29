@@ -12,15 +12,16 @@ require_once "Article.php";
 //  Mevcut bir Article'ı silebilmeliyim
 
 //  tamamını çekip döngüye sokuyoruz
-foreach (Article::all() as $article) {
-  echo $article->title . "<hr>";
+// $articlesOnPage = Article::all();
+foreach (Article::paginate(5, 'ASC', 'sayfanumarasi') as $article) {
+  echo $article->id . " " . $article->title . "<hr>";
 }
 
 ///////////
 //  Yeni bir tane ekleyip hemen ardından güncelliyoruz
-$article = new Article;
-$article->title = "bu ilk hali";
-$article->content = "İçeriğimiz daha da hayırlı olsun inşallah";
-$article->save();
-$article->title = "ama böyle değişmesi lazım";
-$article->save();
+// $article = new Article;
+// $article->title = "bu ilk hali";
+// $article->content = "İçeriğimiz daha da hayırlı olsun inşallah";
+// $article->save();
+// $article->title = "ama böyle değişmesi lazım";
+// $article->save();
