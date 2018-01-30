@@ -18,13 +18,13 @@ require_once "controllers/ArticleController.php";
 //  Artık controller dosyamda işlemleri ayırdığım için bütün talepleri burada karşılayıp ona göre Controller çağırmam gerekecek
 
 $routes = array(
-  "index" => ["ArticleController", "index"],
-  "detail" => ["ArticleController", "detail"],
-  "new" => ["ArticleController", "new"],
-  "store" => ["ArticleController", "store"],
-  "delete" => ["ArticleController", "delete"],
-  "edit" => ["ArticleController", "edit"],
-  "update" => ["ArticleController", "update"],
+  "index"   => ["ArticleController", "index"],
+  "detail"  => ["ArticleController", "detail"],
+  "new"     => ["ArticleController", "new"],
+  "store"   => ["ArticleController", "store"],
+  "delete"  => ["ArticleController", "delete"],
+  "edit"    => ["ArticleController", "edit"],
+  "update"  => ["ArticleController", "update"],
 );
 
 $action = "index";
@@ -32,7 +32,7 @@ if(isset($_GET['a'])){
   if(isset($routes[$_GET['a']])) $action = $_GET['a'];
 }
 
-$controller = $routes[$action][0];
-$method = $routes[$action][1];
+$controller = $routes[$action][0];  // ArticleController
+$method = $routes[$action][1];  //  index
 
-$controller::$method();
+$controller::$method(); //  ArticleController::index();
