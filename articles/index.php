@@ -20,7 +20,7 @@ require_once "controllers/ArticleController.php";
 $routes = array(
   "index"   => ["ArticleController", "index"],
   "detail"  => ["ArticleController", "detail"],
-  "new"     => ["ArticleController", "new"],
+  "new"     => ["ArticleController", "create"],
   "store"   => ["ArticleController", "store"],
   "delete"  => ["ArticleController", "delete"],
   "edit"    => ["ArticleController", "edit"],

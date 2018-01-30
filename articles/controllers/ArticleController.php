@@ -8,7 +8,7 @@ class ArticleController
     require "views/index.php";
   }
 
-  public static function new()
+  public static function create()
   {
     require "views/new.php";
   }
