@@ -8,6 +8,12 @@ class ArticleController
     require "views/index.php";
   }
 
+  public static function search()
+  {
+    $articles = Article::search($_GET['searchterm']);
+    require "views/index.php";
+  }
+
   public static function create()
   {
     require "views/new.php";

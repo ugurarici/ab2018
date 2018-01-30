@@ -25,6 +25,7 @@ $routes = array(
   "delete"  => ["ArticleController", "delete"],
   "edit"    => ["ArticleController", "edit"],
   "update"  => ["ArticleController", "update"],
+  "search"  => ["ArticleController", "search"],
 );
 
 $action = "index";
